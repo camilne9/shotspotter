@@ -1,0 +1,12 @@
+name: Shotspotter
+title: Shotspotter
+username:
+account: christophermilne
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 875564
+bundleId: 2021837
+url: https://christophermilne.shinyapps.io/Shotspotter/
+when: 1555609395.10115
+asMultiple: FALSE
+asStatic: FALSE
