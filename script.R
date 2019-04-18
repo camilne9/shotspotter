@@ -38,12 +38,18 @@ worcester_shapes <- raw_shapes %>%
   mutate(worcester = str_detect(NAME10, "Worcester")) %>% 
   filter(worcester)
 
-gun_locations <- st_as_sf(worcester,
+worcester2 <- worcester %>% 
+  filter(longitude > -72.1) %>% 
+  filter(longitude < -71.6) %>% 
+  filter(latitude > 41.6) %>% 
+  filter(latitude < 42.6)
+
+gun_locations <- st_as_sf(worcester2,
                           coords = c("longitude", "latitude"),
                           crs = 4326)
-ggplot(data = worcester_shapes)  +
-  geom_sf()+
-  #geom_sf(data = gun_locations, aes(color = incident_type, fill = incident_type))+
+ggplot()  +
+  geom_sf(data = worcester_shapes)+
+  geom_sf(data = gun_locations, aes(color = incident_type, fill = incident_type))+
   theme_map()+
   theme_solarized()
   
