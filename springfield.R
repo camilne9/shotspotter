@@ -107,6 +107,8 @@ springfield_shapes <- raw_shapes %>%
   
   filter(springfield)
 
+#This creates an sf object of the locations indicated by the rows of the
+#springfield2 object.
 
 springfield_shot_locations <- st_as_sf(springfield2,
                           coords = c("longitude", "latitude"),
@@ -122,7 +124,8 @@ animation<- ggplot()  +
   labs(title = "Machine Gun Shot locations in Springfield MA",
        subtitle = "By Year, from 2008 to 2018 (Currently Displayed: {closest_state} )")+
   transition_states(year)+
-  labs(x = "Year Displayed: {closest_state}")
+  labs(x = "Year Displayed: {closest_state}")+
+  coord_sf(xlim = c(-72.7,-72.5), ylim = c(42.0,42.2))
 
 
 anim_save("Shotspotter/springfield.gif", animation)
