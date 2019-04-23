@@ -113,7 +113,7 @@ springfield_shot_locations <- st_as_sf(springfield2,
                           crs = 4326,
                           na.fail = FALSE)
 
-ggplot()  +
+animation<- ggplot()  +
   geom_sf(data = springfield_shapes)+
   geom_sf(data = springfield_shot_locations, aes(color = "red", fill = "red", 
                                                  alpha = .1), show.legend = FALSE)+
@@ -123,3 +123,6 @@ ggplot()  +
        subtitle = "By Year, from 2008 to 2018 (Currently Displayed: {closest_state} )")+
   transition_states(year)+
   labs(x = "Year Displayed: {closest_state}")
+
+
+anim_save("Shotspotter/springfield.gif", animation)
