@@ -155,7 +155,8 @@ animation<- ggplot()  +
 #For further clarity of what is displayed, the year displayed is added under the
 #map.
   
-  labs(x = "Year Displayed: {closest_state}")+
+  labs(x = "Year Displayed: {closest_state}",
+       caption = "Source: Justice Tech Lab's Shotspotter Data")+
   
 #This reduces the size of the overall map shown to avoid a lot of dead space
 #without any data points.
