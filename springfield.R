@@ -161,7 +161,7 @@ animation<- ggplot()  +
 #This reduces the size of the overall map shown to avoid a lot of dead space
 #without any data points.
   
-  coord_sf(xlim = c(-72.7,-72.5), ylim = c(42.0,42.2))
+  coord_sf(xlim = c(-72.7,-72.45), ylim = c(42.0,42.2))
 
 #This saves the animation object (the animated map) as a gif and puts it in the
 #folder of the shiny app so it can easily be called into the map.
