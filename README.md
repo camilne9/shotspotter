@@ -1,4 +1,4 @@
-# Shotspotter: Machine Gun Shooting Indicents in Springfield MA
+# Shotspotter: Machine Gun Shooting Incidents in Springfield MA
 This repository creates an animation that uses Shotspotter data from Springfield MA to examine the location of machine gun
 shots in Springfield between 2008 and 2018. Thank you to Justice Tech Lab for making the data used in creating this plot
 available.
