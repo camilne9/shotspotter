@@ -5,8 +5,8 @@ account: christophermilne
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 875564
-bundleId: 2021837
+bundleId: 2034598
 url: https://christophermilne.shinyapps.io/Shotspotter/
-when: 1555609395.10115
+when: 1556078386.6762
 asMultiple: FALSE
 asStatic: FALSE
