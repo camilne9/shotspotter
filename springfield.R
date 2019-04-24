@@ -107,25 +107,62 @@ springfield_shapes <- raw_shapes %>%
   
   filter(springfield)
 
-#This creates an sf object of the locations indicated by the rows of the
-#springfield2 object.
+#This creates an sf object of the locations indicated by longitude and latitude
+#for all the rows of the springfield2 object. The crs determines the convention
+#of the perspective and the na.fail allows the command to handle na coordinates.
 
 springfield_shot_locations <- st_as_sf(springfield2,
                           coords = c("longitude", "latitude"),
                           crs = 4326,
                           na.fail = FALSE)
 
+#This creates an animated plot (map) and spores it as an object called
+#animation.
+
 animation<- ggplot()  +
+  
+#This adds a layer to the plot indicating the region of springfield as
+#determined by the shapefile.
+  
   geom_sf(data = springfield_shapes)+
+  
+#This adds in the points of the machine gun shots using the sf object we
+#previously created with this information. The points are given color, made
+#translucent so that it is clear when they are clumped together, and the legend
+#is removed because it adds no useful information.
+  
   geom_sf(data = springfield_shot_locations, aes(color = "red", fill = "red", 
                                                  alpha = .1), show.legend = FALSE)+
+#This makes the plot formated as a map.
+  
   theme_map()+
+  
+#This improves the appearance of the map by adding some color and coordinates.
+  
   theme_solarized()+
+
+#This adds a descriptive title and subtitle explaining what the map shows. The
+#subtitle adds shows the year currently displayed.
+  
   labs(title = "Machine Gun Shot locations in Springfield MA",
-       subtitle = "By Year, from 2008 to 2018 (Currently Displayed: {closest_state} )")+
+       subtitle = "By Year, from 2008 to 2018 (Currently Displaying: {closest_state} )")+
+  
+#This indicates that the plot will be animated with each frame showing a
+#different year.
+  
   transition_states(year)+
+  
+#For further clarity of what is displayed, the year displayed is added under the
+#map.
+  
   labs(x = "Year Displayed: {closest_state}")+
+  
+#This reduces the size of the overall map shown to avoid a lot of dead space
+#without any data points.
+  
   coord_sf(xlim = c(-72.7,-72.5), ylim = c(42.0,42.2))
 
+#This saves the animation object (the animated map) as a gif and puts it in the
+#folder of the shiny app so it can easily be called into the map.
 
 anim_save("Shotspotter/springfield.gif", animation)
