@@ -9,13 +9,17 @@
 
 library(shiny)
 
-# Define UI for application that draws a histogram
+#This creates the ui for the app.
+
 ui <- fluidPage(
    
-   # Application title
+#This creates an application title.
+  
    titlePanel("Machine Gun Shots in Springfield MA"),
    
-   # Sidebar with a slider input for number of bins 
+#This creates a sidebar panel describing the animation and the data used. It
+#also gives the link to the shotspotter data and this repo.
+
    sidebarLayout(
      sidebarPanel(
        h4("Description:"),
@@ -37,12 +41,17 @@ h4("Christopher Milne")
    )
 )
 
-# Define server logic required to draw a histogram
+#This defines the server for the app.
+
 server <- function(input, output) {
+  
+#These create the objects needed for the hyperlinks.
   
   source<- a("here.", href="http://justicetechlab.org/shotspotter-data/")
   
   url <- a("here.", href="https://github.com/camilne9/shotspotter")
+
+#These create the hyperlinks.
   
   output$shotspotter <- renderUI({
     tagList("You can find the complete Shotspotter data", source)})
@@ -50,10 +59,14 @@ server <- function(input, output) {
   output$link <- renderUI({
     tagList("You can find the github repository creating this animation", url)})
   
+#This renders the gif file containing the animation that we created from the
+#script.
+  
    output$test <- renderImage(expr = list(src = "springfield.gif"), 
                               deleteFile = FALSE)
 }
 
-# Run the application 
+# This runs the application.
+
 shinyApp(ui = ui, server = server)
 
